@@ -1,7 +1,7 @@
 # StyTr^2 : Unbiased Image Style Transfer with Transformers
 Yingying Deng, Fan Tang, XingjiaPan, Weiming Dong, Chongyang Ma, Changsheng Xu <br>
 
-## results presentation 
+## Results presentation 
 <p align="center">
 <img src="https://github.com/diyiiyiii/StyTR-2/blob/main/Figure/Unbiased.png" width="90%" height="90%">
 </p>
