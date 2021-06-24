@@ -3,7 +3,7 @@ Yingying Deng, Fan Tang, XingjiaPan, Weiming Dong, Chongyang Ma, Changsheng Xu <
 
 ## results presentation 
 <p align="center">
-<img src="https://github.com/diyiiyiii/Arbitrary-Style-Transfer-via-Multi-Adaptation-Network/blob/master/framework/results1.png" width="50%" height="50%">
+<img src="https://github.com/diyiiyiii/StyTR-2/blob/mian/Figure/Unbiased.png" width="50%" height="50%">
 </p>
 Stylized result using Claude Monet's painting as style reference. Compared with some state-of-the-art algorithms, our result can preserve detailed content structures and maintain vivid style patterns.  <br>
 
