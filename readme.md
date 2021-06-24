@@ -3,17 +3,16 @@ Yingying Deng, Fan Tang, XingjiaPan, Weiming Dong, Chongyang Ma, Changsheng Xu <
 
 ## results presentation 
 <p align="center">
-<img src="https://github.com/diyiiyiii/StyTR-2/blob/main/Figure/Unbiased.png" width="50%" height="50%">
+<img src="https://github.com/diyiiyiii/StyTR-2/blob/main/Figure/Unbiased.png" width="90%" height="90%">
 </p>
-Stylized result using Claude Monet's painting as style reference. Compared with some state-of-the-art algorithms, our result can preserve detailed content structures and maintain vivid style patterns.  <br>
+Comparisons of the biased and unbiased methods. Compared with some state-of-the-art algorithms, our method has a strong ability to avoid content leak and has better feature representation ability.  <br>
 
 
 ## Framework
 <p align="center">
-<img src="https://github.com/diyiiyiii/Arbitrary-Style-Transfer-via-Multi-Adaptation-Network/blob/master/framework/framework1.png" width="80%" height="80%">
+<img src="https://github.com/diyiiyiii/StyTR-2/blob/main/Figure/network.png" width="80%" height="80%">
 </p> 
-System overview. For the purpose of arbitrary style transfer, we propose a feed-forward network, which contains an encoder-decoder architecture and a multi-adaptation module.
-
+The overall pipeline of our StyTr^2 framework. We split the content and style images into patches, and use a linear projection to obtain image sequences. Then the content sequences added with COPE are fed into the content transformer encoder, while the style sequences are fed into the style transformer encoder. Following the two transformer encoders, a multi-layer transformer decoder is adopted to stylize the content sequences according to the style sequences. Finally, we use a progressive upsampling decoder to obtain the stylized images with high-resolution.
 
 <p align="center">
 <img src="https://github.com/diyiiyiii/Arbitrary-Style-Transfer-via-Multi-Adaptation-Network/blob/master/framework/SACA1.png" width="80%" height="80%">
