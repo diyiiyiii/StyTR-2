@@ -24,7 +24,7 @@ The overall pipeline of our StyTr^2 framework. We split the content and style im
 * tqdm  <br> 
 
 ### Testing 
-Pretrained models: [vgg-model](https://drive.google.com/file/d/1BinnwM5AmIcVubr16tPTqxMjUCE8iu5M/view?usp=sharing),  decoder, Transformer_module [Coming SOON](Coming SOON)   <br> 
+Pretrained models: [vgg-model](https://drive.google.com/file/d/1BinnwM5AmIcVubr16tPTqxMjUCE8iu5M/view?usp=sharing),  decoder[Coming SOON], Transformer_module [Coming SOON]   <br> 
 Please download them and put them into the floder  ./experiments/  <br> 
 ```
 python test.py  --content_dir input/content/ --style_dir input/style/    --output out
