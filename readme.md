@@ -1,5 +1,5 @@
-# Arbitrary-Style-Transfer-via-Multi-Adaptation-Network
-Yingying Deng, Fan Tang, Weiming Dong, Wen Sun, Feiyue Huang, Changsheng Xu  <br>
+# StyTr^2 : Unbiased Image Style Transfer with Transformers
+Yingying Deng, Fan Tang, XingjiaPan, Weiming Dong, Chongyang Ma, Changsheng Xu <br>
 
 ## results presentation 
 <p align="center">
