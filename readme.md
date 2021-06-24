@@ -24,14 +24,14 @@ The overall pipeline of our StyTr^2 framework. We split the content and style im
 * tqdm  <br> 
 
 ### Testing 
-Pretrained models: [vgg-model](https://drive.google.com/file/d/1BinnwM5AmIcVubr16tPTqxMjUCE8iu5M/view?usp=sharing),  decoder, Transformer_module[Coming SOON](Coming SOON)   <br> 
+Pretrained models: [vgg-model](https://drive.google.com/file/d/1BinnwM5AmIcVubr16tPTqxMjUCE8iu5M/view?usp=sharing),  decoder, Transformer_module [Coming SOON](Coming SOON)   <br> 
 Please download them and put them into the floder  ./experiments/  <br> 
 ```
 python test.py  --content_dir input/content/ --style_dir input/style/    --output out
 ```
 ### Training  
-Traing style set is WikiArt collected from [WIKIART](https://www.wikiart.org/)  <br>  
-content set is COCO2014  <br>  
+Style dataset is WikiArt collected from [WIKIART](https://www.wikiart.org/)  <br>  
+content dataset is COCO2014  <br>  
 ```
 python train.py --style_dir ../../datasets/Images/ --content_dir ../../datasets/train2014 --save_dir models/ --batch_size 8
 ```
