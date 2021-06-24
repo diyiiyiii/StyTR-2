@@ -10,14 +10,10 @@ Comparisons of the biased and unbiased methods. Compared with some state-of-the-
 
 ## Framework
 <p align="center">
-<img src="https://github.com/diyiiyiii/StyTR-2/blob/main/Figure/network.png" width="80%" height="80%">
+<img src="https://github.com/diyiiyiii/StyTR-2/blob/main/Figure/network.png" width="100%" height="100%">
 </p> 
 The overall pipeline of our StyTr^2 framework. We split the content and style images into patches, and use a linear projection to obtain image sequences. Then the content sequences added with COPE are fed into the content transformer encoder, while the style sequences are fed into the style transformer encoder. Following the two transformer encoders, a multi-layer transformer decoder is adopted to stylize the content sequences according to the style sequences. Finally, we use a progressive upsampling decoder to obtain the stylized images with high-resolution.
 
-<p align="center">
-<img src="https://github.com/diyiiyiii/Arbitrary-Style-Transfer-via-Multi-Adaptation-Network/blob/master/framework/SACA1.png" width="80%" height="80%">
-</p> 
-The multi-adaptation module is divided into three parts: position-wise content SA module, channel-wise style SA module, and CA module.  <br>
 
 
 ## Experiment
@@ -28,25 +24,26 @@ The multi-adaptation module is divided into three parts: position-wise content S
 * tqdm  <br> 
 
 ### Testing 
-Pretrained models: [vgg-model](https://drive.google.com/file/d/1BinnwM5AmIcVubr16tPTqxMjUCE8iu5M/view?usp=sharing),  [decoder, MA_module](https://drive.google.com/file/d/1JaFfo6VB5NG0y69YfmB6WWjODQNdymWt/view?usp=sharing)   <br> 
-Please download them and put them into the floder  ./model/  <br> 
+Pretrained models: [vgg-model](https://drive.google.com/file/d/1BinnwM5AmIcVubr16tPTqxMjUCE8iu5M/view?usp=sharing),  decoder, Transformer_module[Coming SOON](Coming SOON)   <br> 
+Please download them and put them into the floder  ./experiments/  <br> 
 ```
 python test.py  --content_dir input/content/ --style_dir input/style/    --output out
 ```
 ### Training  
-Traing set is WikiArt collected from [WIKIART](https://www.wikiart.org/)  <br>  
-Testing set is COCO2014  <br>  
+Traing style set is WikiArt collected from [WIKIART](https://www.wikiart.org/)  <br>  
+content set is COCO2014  <br>  
 ```
-python train.py --style_dir ../../datasets/Images/ --content_dir ../../datasets/train2014 --save_dir models/ --batch_size 4
+python train.py --style_dir ../../datasets/Images/ --content_dir ../../datasets/train2014 --save_dir models/ --batch_size 8
 ```
 ### Reference
-If you use our work in your research, please cite us using the following BibTeX entry ~ Thank you ^ . ^. Paper Link [pdf](https://arxiv.org/abs/2005.13219)<br> 
+If you use our work in your research, please cite us using the following BibTeX entry ~ Thank you ^ . ^. Paper Link [pdf](https://arxiv.org/abs/2105.14576)<br> 
 ```
-@inproceedings{deng:2020:arbitrary,
-  title={Arbitrary Style Transfer via Multi-Adaptation Network},
-  author={Deng, Yingying and Tang, Fan and Dong, Weiming and Sun, Wen, and Huang, Feiyue and Xu, Changsheng},
-  booktitle={Acm International Conference on Multimedia},
-  year={2020},
- publisher = {ACM},
+@inproceedings{deng2021stytr2,
+      title={StyTr^2: Unbiased Image Style Transfer with Transformers}, 
+      author={Yingying Deng and Fan Tang and Xingjia Pan and Weiming Dong and Chongyang Ma and Changsheng Xu},
+      year={2021},
+      eprint={2105.14576},
+      archivePrefix={arXiv},
+
 }
 ```
