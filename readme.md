@@ -1,4 +1,4 @@
-# StyTr^2 : Unbiased Image Style Transfer with Transformers
+# StyTr^2 : Image Style Transfer with Transformers
 Yingying Deng, Fan Tang, XingjiaPan, Weiming Dong, Chongyang Ma, Changsheng Xu <br>
 
 This paper is proposed to achieve unbiased image style transfer based on the transformer model. We can promote the stylization effect compared with state-of-the-art methods.
