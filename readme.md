@@ -1,5 +1,5 @@
-# StyTr^2 : Image Style Transfer with Transformers
-Yingying Deng, Fan Tang, XingjiaPan, Weiming Dong, Chongyang Ma, Changsheng Xu <br>
+# StyTr^2 : Image Style Transfer with Transformers（CVPR2022）
+*Authors: [Yingying Deng](https://diyiiyiii.github.io/), Fan Tang, XingjiaPan, Weiming Dong, Chongyang Ma, Changsheng Xu*
 
 This paper is proposed to achieve unbiased image style transfer based on the transformer model. We can promote the stylization effect compared with state-of-the-art methods.
 This repository is the official implementation of [SyTr^2 : Image Style Transfer with Transformers](https://arxiv.org/abs/2105.14576).
@@ -8,7 +8,7 @@ This repository is the official implementation of [SyTr^2 : Image Style Transfer
 <p align="center">
 <img src="https://github.com/diyiiyiii/StyTR-2/blob/main/Figure/Unbiased.png" width="90%" height="90%">
 </p>
-Compared with some state-of-the-art algorithms, our method has a strong ability to avoid content leak and has better feature representation ability.  <br>
+Compared with some state-of-the-art algorithms, our method has a strong ability to avoid content leakage and has better feature representation ability.  <br>
 
 
 ## Framework
@@ -39,13 +39,12 @@ content dataset is COCO2014  <br>
 python train.py --style_dir ../../datasets/Images/ --content_dir ../../datasets/train2014 --save_dir models/ --batch_size 8
 ```
 ### Reference
-If you use our work in your research, please cite us using the following BibTeX entry ~ Thank you ^ . ^. Paper Link [pdf](https://arxiv.org/abs/2105.14576)<br> 
+If you find our work useful in your research, please cite our paper using the following BibTeX entry ~ Thank you ^ . ^. Paper Link [pdf](https://arxiv.org/abs/2105.14576)<br> 
 ```
 @inproceedings{deng2021stytr2,
       title={StyTr^2: Image Style Transfer with Transformers}, 
       author={Yingying Deng and Fan Tang and Xingjia Pan and Weiming Dong and Chongyang Ma and Changsheng Xu},
       booktitle={CVPR},
       year={2022},
-
 }
 ```
