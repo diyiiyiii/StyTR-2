@@ -44,9 +44,8 @@ If you use our work in your research, please cite us using the following BibTeX 
 @inproceedings{deng2021stytr2,
       title={StyTr^2: Unbiased Image Style Transfer with Transformers}, 
       author={Yingying Deng and Fan Tang and Xingjia Pan and Weiming Dong and Chongyang Ma and Changsheng Xu},
-      year={2021},
-      eprint={2105.14576},
-      archivePrefix={arXiv},
+      booktitle={CVPR},
+      year={2022},
 
 }
 ```
