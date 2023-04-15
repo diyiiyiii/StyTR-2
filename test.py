@@ -171,8 +171,16 @@ for content_path in content_paths:
         
         with torch.no_grad():
             output= network(content,style)       
-        output = output.cpu()
-                
+        #output = output.cpu()
+        print(output[0].shape)
+        img = output[0].cpu().numpy() # 1 x 3 x H x W
+        img = np.squeeze(img, axis=0)
+        img = np.transpose(img, (1, 2, 0))
+        img = img * 255.0
+        img = img.astype(np.uint8)
+        img = Image.fromarray(img)
+        img.save('output.jpg')
+
         output_name = '{:s}/{:s}_stylized_{:s}{:s}'.format(
             output_path, splitext(basename(content_path))[0],
             splitext(basename(style_path))[0], save_ext
