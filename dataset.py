@@ -2,8 +2,9 @@ import torch.utils.data as data
 from pathlib import Path
 import os
 import torch
+import torchvision
 from PIL import Image
-from transformers import AutoTokenizer, CLIPTextModel
+from transformers import AutoTokenizer, CLIPTextModel, CLIPImageProcessor, CLIPVisionModel
 from template import imagenet_templates
 
 class FlatFolderDataset(data.Dataset):
@@ -29,6 +30,38 @@ class FlatFolderDataset(data.Dataset):
         return len(self.paths)
     def name(self):
         return 'FlatFolderDataset'
+
+# def collate_fn_image(batch):
+#     preprocessor = CLIPImageProcessor()
+#     batch = preprocessor(batch)
+#     model = CLIPVisionModel.from_pretrained("openai/clip-vit-base-patch32")
+#     batch = model.encode_image(**batch)
+#     return batch
+
+class ImageTokenDataset(data.Dataset):
+    '''
+    Dataset that uses clip image encoder to encode image into tokens
+    '''
+    def __init__(self, image_dir: Path):
+        super(ImageTokenDataset, self).__init__()
+        self.image_dir = image_dir
+        self.image_processor = CLIPImageProcessor()
+        self.image_encoder = CLIPVisionModel.from_pretrained("openai/clip-vit-base-patch32")
+        self.image_embedding = dict()
+
+        self.images = [f for f in self.image_dir.glob('*')]
+
+    def __getitem__(self, index):
+        # use preprocessor to break image into patches
+        # and use vision model to encode patches into tokens
+        img = torchvision.io.read_image(str(self.images[index]))
+        img = self.image_processor(img)
+        img = self.image_encoder(**img)
+        return img
+
+    def __len__(self):
+        return len(self.images)
+
 
 class RandomTextDataset(data.Dataset):
     '''
@@ -91,9 +124,26 @@ def test_text_encoder():
 
 
 def test_text_loader():
-    text_loader = RandomTextDataset()
-    print(text_loader[0]['cls_token'].shape)
-    print(text_loader[0]['average_pooling'].shape)
+    text_dataset = RandomTextDataset()
+    print(text_dataset[0]['cls_token'].shape)
+    print(text_dataset[0]['average_pooling'].shape)
+
+def test_image_loader():
+    image_dataset = ImageTokenDataset(Path("input_content/"))
+    image_dataloader = data.DataLoader(image_dataset, batch_size=1, shuffle=False, num_workers=0, collate_fn=collate_fn_image)
+    for i, input in enumerate(image_dataloader):
+        print(input)
+        break
+
+def test_image_encoder():
+    model = CLIPVisionModel.from_pretrained("openai/clip-vit-base-patch32")
+    processor = CLIPImageProcessor()
+    img = torch.rand(1, 3, 224, 224)
+    img = processor(img)
+    output = model(torch.tensor(img['pixel_values'][0].reshape(1, 3, 224, 224)))
+    print(output.keys())
 
 #test_text_encoder()
 #test_text_loader()
+test_image_encoder()
+#test_image_loader()
