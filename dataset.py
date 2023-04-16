@@ -54,10 +54,12 @@ class ImageTokenDataset(data.Dataset):
     def __getitem__(self, index):
         # use preprocessor to break image into patches
         # and use vision model to encode patches into tokens
+        # TODO Move this part to model 
         img = torchvision.io.read_image(str(self.images[index]))
         img = self.image_processor(img)
+        img['pixel_values'] = torch.tensor(img['pixel_values'])
         img = self.image_encoder(**img)
-        return img
+        return img.last_hidden_state.squeeze(0)
 
     def __len__(self):
         return len(self.images)
@@ -130,7 +132,7 @@ def test_text_loader():
 
 def test_image_loader():
     image_dataset = ImageTokenDataset(Path("input_content/"))
-    image_dataloader = data.DataLoader(image_dataset, batch_size=1, shuffle=False, num_workers=0, collate_fn=collate_fn_image)
+    image_dataloader = data.DataLoader(image_dataset, batch_size=4, shuffle=False, num_workers=0)
     for i, input in enumerate(image_dataloader):
         print(input)
         break
@@ -138,12 +140,13 @@ def test_image_loader():
 def test_image_encoder():
     model = CLIPVisionModel.from_pretrained("openai/clip-vit-base-patch32")
     processor = CLIPImageProcessor()
-    img = torch.rand(1, 3, 224, 224)
+    img = torch.rand(4, 3, 224, 224)
     img = processor(img)
-    output = model(torch.tensor(img['pixel_values'][0].reshape(1, 3, 224, 224)))
+    img['pixel_values'] = torch.tensor(img['pixel_values'])
+    output = model(**img)
     print(output.keys())
 
 #test_text_encoder()
 #test_text_loader()
-test_image_encoder()
-#test_image_loader()
+#test_image_encoder()
+test_image_loader()
